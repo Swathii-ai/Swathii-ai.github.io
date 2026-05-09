@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swathi M — Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-dark: #085041;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-muted: #888;
+    --surface: #fafaf8;
+    --white: #ffffff;
+    --border: rgba(0,0,0,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-weight: 400;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-inner {
+    padding-top: 5rem;
+    width: 100%;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 0.35rem 0.9rem;
+    border-radius: 2rem;
+    margin-bottom: 1.8rem;
+    font-weight: 500;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(4.5rem, 10vw, 9rem);
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-tagline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .hero-tagline em { color: var(--teal); font-style: italic; }
+  .hero-bio {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 0.4rem;
+    font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+    font-weight: 500;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+    padding: 0.85rem 2rem;
+    border-radius: 0.4rem;
+    font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s, color 0.2s;
+    font-weight: 400;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--ink);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.8rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+  }
+  .skill-icon {
+    width: 44px; height: 44px;
+    background: var(--teal-light);
+    border-radius: 0.7rem;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+  .skill-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .skill-card p {
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    color: var(--ink-soft);
+  }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    padding-left: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 8px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .timeline-meta {
+    display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.4rem;
+  }
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--teal);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .timeline-company {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    padding: 0.2rem 0.6rem;
+    background: var(--teal-light);
+    border-radius: 2rem;
+    color: var(--teal-dark);
+  }
+  .timeline-role {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .timeline-bullets li {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 0.85rem;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+  }
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 1.2rem;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  }
+  .project-visual {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .project-visual svg { width: 100%; height: 100%; }
+  .project-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+  .project-number {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    margin-bottom: 0.6rem;
+  }
+  .project-card h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+    line-height: 1.35;
+  }
+  .project-card p {
+    font-size: 0.87rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    flex: 1;
+  }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tool-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    border-radius: 2rem;
+    font-weight: 500;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--ink); border-radius: 1.5rem; padding: 4rem; }
+  .contact-section .section-label { color: #9FE1CB; }
+  .contact-section .section-title { color: #fff; margin-bottom: 1rem; }
+  .contact-intro { color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; font-size: 1rem; font-weight: 300; }
+  .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 0.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .contact-link:hover { background: rgba(29,158,117,0.3); border-color: var(--teal); }
+  .contact-link svg { width: 18px; height: 18px; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .fade-up:nth-child(2) { animation-delay: 0.1s; }
+  .fade-up:nth-child(3) { animation-delay: 0.2s; }
+  .fade-up:nth-child(4) { animation-delay: 0.3s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .contact-section { padding: 2.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Swathi M</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag fade-up">📍 Palakkad, Kerala · Data Analyst</div>
+    <h1 class="fade-up hero-name">Swathi M</h1>
+    <p class="hero-tagline fade-up">Turning data into <em>clear decisions.</em></p>
+    <p class="hero-bio fade-up">
+      Entry-level Data Analyst with hands-on experience in Python, SQL, Power BI, and Machine Learning. I build dashboards, decode patterns, and make data actually useful.
+    </p>
+    <div class="hero-actions fade-up">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="mailto:swathichandran112@gmail.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I work with</div>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <h3>Data Analysis</h3>
+      <p>Cleaning, exploring, and finding the story inside messy datasets.</p>
+      <div class="skill-tags">
+        <span class="tag">EDA</span>
+        <span class="tag">KPI Analysis</span>
+        <span class="tag">Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🐍</div>
+      <h3>Programming</h3>
+      <p>Writing clean Python and SQL to process, query, and transform data.</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📈</div>
+      <h3>Visualisation</h3>
+      <p>Crafting dashboards and charts that communicate insights at a glance.</p>
+      <div class="skill-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">DAX</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <h3>Machine Learning</h3>
+      <p>Building and evaluating models — from simple regression to deep learning.</p>
+      <div class="skill-tags">
+        <span class="tag">CNN</span>
+        <span class="tag">LSTM</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Scikit-learn</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <h3>Cloud & Tools</h3>
+      <p>Deploying AI solutions and managing workflows in cloud environments.</p>
+      <div class="skill-tags">
+        <span class="tag">Azure AI</span>
+        <span class="tag">Jupyter</span>
+        <span class="tag">Git</span>
+        <span class="tag">Excel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I've worked</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="timeline-date">Feb 2025 – Oct 2025</span>
+        <span class="timeline-company">Futura Labs, Kochi</span>
+      </div>
+      <p class="timeline-role">Data Science Intern</p>
+      <ul class="timeline-bullets">
+        <li>Performed EDA, preprocessing, and visualisation using Python libraries on real-world datasets</li>
+        <li>Built and evaluated ML models for classification and regression tasks</li>
+        <li>Developed deep learning models (CNN, LSTM) for image and sequence data</li>
+        <li>Extracted actionable insights from data and presented them visually to stakeholders</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="timeline-date">Sep 2024 – Nov 2024</span>
+        <span class="timeline-company">ICT Academy, Coimbatore</span>
+      </div>
+      <p class="timeline-role">Artificial Intelligence Intern</p>
+      <ul class="timeline-bullets">
+        <li>Gained hands-on experience with Microsoft Azure AI Services through intensive training</li>
+        <li>Developed and deployed AI solutions using Azure Cognitive Services (vision, language, speech APIs)</li>
+        <li>Built intelligent applications addressing real-world use cases</li>
+        <li>Strengthened skills in cloud-based AI, model integration, and problem-solving</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="timeline-date">Jul 2023 – Sep 2023</span>
+        <span class="timeline-company">ZanX Technologies, Palakkad</span>
+      </div>
+      <p class="timeline-role">Machine Learning Intern</p>
+      <ul class="timeline-bullets">
+        <li>Built NLP-based text summarisation and sentiment analysis models</li>
+        <li>Applied supervised learning algorithms on cleaned and preprocessed datasets</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Things I've built</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <!-- 01 Sales Dashboard -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#E1F5EE"/>
+          <!-- grid lines -->
+          <line x1="40" y1="20" x2="40" y2="150" stroke="#9FE1CB" stroke-width="1"/>
+          <line x1="40" y1="150" x2="380" y2="150" stroke="#9FE1CB" stroke-width="1"/>
+          <line x1="40" y1="110" x2="380" y2="110" stroke="#9FE1CB" stroke-width="0.5" stroke-dasharray="4,3"/>
+          <line x1="40" y1="80" x2="380" y2="80" stroke="#9FE1CB" stroke-width="0.5" stroke-dasharray="4,3"/>
+          <line x1="40" y1="50" x2="380" y2="50" stroke="#9FE1CB" stroke-width="0.5" stroke-dasharray="4,3"/>
+          <!-- bars -->
+          <rect x="60" y="90" width="32" height="60" rx="4" fill="#1D9E75" opacity="0.85"/>
+          <rect x="110" y="70" width="32" height="80" rx="4" fill="#1D9E75" opacity="0.85"/>
+          <rect x="160" y="50" width="32" height="100" rx="4" fill="#1D9E75"/>
+          <rect x="210" y="75" width="32" height="75" rx="4" fill="#0F6E56" opacity="0.85"/>
+          <rect x="260" y="40" width="32" height="110" rx="4" fill="#1D9E75"/>
+          <rect x="310" y="60" width="32" height="90" rx="4" fill="#1D9E75" opacity="0.85"/>
+          <!-- trend line -->
+          <polyline points="76,90 126,70 176,52 226,77 276,42 326,62" fill="none" stroke="#085041" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- dots on trend -->
+          <circle cx="76" cy="90" r="4" fill="#085041"/>
+          <circle cx="126" cy="70" r="4" fill="#085041"/>
+          <circle cx="176" cy="52" r="4" fill="#085041"/>
+          <circle cx="226" cy="77" r="4" fill="#085041"/>
+          <circle cx="276" cy="42" r="4" fill="#085041"/>
+          <circle cx="326" cy="62" r="4" fill="#085041"/>
+          <!-- KPI pills -->
+          <rect x="42" y="158" width="70" height="16" rx="8" fill="#1D9E75"/>
+          <text x="77" y="170" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">↑ Revenue</text>
+          <rect x="120" y="158" width="60" height="16" rx="8" fill="#0F6E56"/>
+          <text x="150" y="170" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">KPI Drill</text>
+          <rect x="188" y="158" width="56" height="16" rx="8" fill="#1D9E75" opacity="0.7"/>
+          <text x="216" y="170" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">DAX Filter</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">01</span>
+        <h3>Sales Analysis Dashboard</h3>
+        <p>Interactive Power BI dashboard tracking sales performance, KPIs, and trends. Features filters, drill-downs, and DAX-powered metrics for business decision-making.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Power BI</span>
+          <span class="tool-badge">Excel</span>
+          <span class="tool-badge">DAX</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 EDA -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#f0f8ff"/>
+          <!-- scatter plot -->
+          <circle cx="80" cy="120" r="5" fill="#1D9E75" opacity="0.7"/>
+          <circle cx="100" cy="100" r="5" fill="#1D9E75" opacity="0.7"/>
+          <circle cx="120" cy="115" r="5" fill="#1D9E75" opacity="0.7"/>
+          <circle cx="140" cy="85" r="6" fill="#1D9E75" opacity="0.8"/>
+          <circle cx="160" cy="95" r="5" fill="#1D9E75" opacity="0.7"/>
+          <circle cx="180" cy="70" r="7" fill="#0F6E56"/>
+          <circle cx="200" cy="80" r="5" fill="#1D9E75" opacity="0.7"/>
+          <circle cx="220" cy="60" r="6" fill="#1D9E75" opacity="0.9"/>
+          <circle cx="240" cy="65" r="5" fill="#1D9E75" opacity="0.7"/>
+          <circle cx="260" cy="50" r="7" fill="#0F6E56"/>
+          <circle cx="280" cy="55" r="5" fill="#1D9E75" opacity="0.8"/>
+          <circle cx="300" cy="40" r="6" fill="#1D9E75"/>
+          <!-- regression line -->
+          <line x1="70" y1="130" x2="320" y2="30" stroke="#085041" stroke-width="2" stroke-dasharray="6,3" opacity="0.7"/>
+          <!-- axes -->
+          <line x1="60" y1="145" x2="330" y2="145" stroke="#9FE1CB" stroke-width="1.5"/>
+          <line x1="60" y1="25" x2="60" y2="145" stroke="#9FE1CB" stroke-width="1.5"/>
+          <!-- heatmap strip -->
+          <rect x="340" y="25" width="30" height="120" rx="4" fill="url(#heatGrad)"/>
+          <defs>
+            <linearGradient id="heatGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#085041"/>
+              <stop offset="100%" stop-color="#E1F5EE"/>
+            </linearGradient>
+          </defs>
+          <text x="355" y="20" font-family="sans-serif" font-size="8" fill="#4a4a4a" text-anchor="middle">corr</text>
+          <!-- labels -->
+          <text x="200" y="170" font-family="sans-serif" font-size="10" fill="#1D9E75" text-anchor="middle" font-weight="500">Correlation · Outlier Detection · Trend Analysis</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">02</span>
+        <h3>Exploratory Data Analysis — Python</h3>
+        <p>In-depth EDA to uncover trends, correlations, and outliers within real datasets. Visualised findings using Matplotlib and Seaborn to communicate key insights.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">Pandas</span>
+          <span class="tool-badge">NumPy</span>
+          <span class="tool-badge">Seaborn</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Deep Learning -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#f5f0ff"/>
+          <!-- CNN layers -->
+          <rect x="20" y="55" width="22" height="70" rx="3" fill="#7F77DD" opacity="0.9"/>
+          <rect x="26" y="60" width="22" height="60" rx="3" fill="#7F77DD" opacity="0.7"/>
+          <rect x="32" y="65" width="22" height="50" rx="3" fill="#7F77DD" opacity="0.5"/>
+          <text x="33" y="145" font-family="sans-serif" font-size="8" fill="#534AB7" text-anchor="middle">Input</text>
+
+          <rect x="80" y="45" width="20" height="90" rx="3" fill="#534AB7" opacity="0.9"/>
+          <rect x="85" y="50" width="20" height="80" rx="3" fill="#534AB7" opacity="0.7"/>
+          <rect x="90" y="55" width="20" height="70" rx="3" fill="#534AB7" opacity="0.5"/>
+          <text x="95" y="145" font-family="sans-serif" font-size="8" fill="#534AB7" text-anchor="middle">Conv1</text>
+
+          <rect x="135" y="60" width="18" height="60" rx="3" fill="#3C3489" opacity="0.9"/>
+          <rect x="140" y="65" width="18" height="50" rx="3" fill="#3C3489" opacity="0.7"/>
+          <text x="149" y="145" font-family="sans-serif" font-size="8" fill="#3C3489" text-anchor="middle">Conv2</text>
+
+          <!-- arrow -->
+          <line x1="165" y1="90" x2="195" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#888"/>
+            </marker>
+          </defs>
+
+          <!-- LSTM block -->
+          <rect x="200" y="60" width="80" height="60" rx="8" fill="#1D9E75" opacity="0.15" stroke="#1D9E75" stroke-width="1.5"/>
+          <text x="240" y="86" font-family="sans-serif" font-size="11" fill="#085041" text-anchor="middle" font-weight="500">LSTM</text>
+          <text x="240" y="102" font-family="sans-serif" font-size="8" fill="#0F6E56" text-anchor="middle">memory cell</text>
+
+          <!-- arrow -->
+          <line x1="285" y1="90" x2="310" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- output -->
+          <rect x="315" y="70" width="60" height="40" rx="6" fill="#085041"/>
+          <text x="345" y="94" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Output</text>
+
+          <text x="200" y="165" font-family="sans-serif" font-size="10" fill="#534AB7" text-anchor="middle" font-weight="500">CNN  ·  LSTM  ·  Deep Learning Pipeline</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">03</span>
+        <h3>Deep Learning — Image &amp; Sequence Models</h3>
+        <p>Developed CNN models for image classification and LSTM models for sequence-based tasks. Built end-to-end pipelines from preprocessing to evaluation at Futura Labs.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">CNN</span>
+          <span class="tool-badge">LSTM</span>
+          <span class="tool-badge">TensorFlow</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 ML Models -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#fff8f0"/>
+          <!-- confusion matrix -->
+          <rect x="30" y="30" width="55" height="55" rx="4" fill="#1D9E75" opacity="0.9"/>
+          <text x="57" y="62" font-family="sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="500">87</text>
+          <text x="57" y="76" font-family="sans-serif" font-size="8" fill="white" text-anchor="middle">TP</text>
+
+          <rect x="90" y="30" width="55" height="55" rx="4" fill="#E1F5EE" stroke="#9FE1CB" stroke-width="1"/>
+          <text x="117" y="62" font-family="sans-serif" font-size="18" fill="#085041" text-anchor="middle" font-weight="500">6</text>
+          <text x="117" y="76" font-family="sans-serif" font-size="8" fill="#0F6E56" text-anchor="middle">FP</text>
+
+          <rect x="30" y="90" width="55" height="55" rx="4" fill="#E1F5EE" stroke="#9FE1CB" stroke-width="1"/>
+          <text x="57" y="122" font-family="sans-serif" font-size="18" fill="#085041" text-anchor="middle" font-weight="500">9</text>
+          <text x="57" y="136" font-family="sans-serif" font-size="8" fill="#0F6E56" text-anchor="middle">FN</text>
+
+          <rect x="90" y="90" width="55" height="55" rx="4" fill="#1D9E75" opacity="0.75"/>
+          <text x="117" y="122" font-family="sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="500">92</text>
+          <text x="117" y="136" font-family="sans-serif" font-size="8" fill="white" text-anchor="middle">TN</text>
+
+          <!-- divider -->
+          <line x1="170" y1="25" x2="170" y2="155" stroke="#e0e0e0" stroke-width="1"/>
+
+          <!-- accuracy meter -->
+          <text x="285" y="45" font-family="sans-serif" font-size="11" fill="#4a4a4a" text-anchor="middle">Accuracy</text>
+          <circle cx="285" cy="100" r="40" fill="none" stroke="#E1F5EE" stroke-width="10"/>
+          <circle cx="285" cy="100" r="40" fill="none" stroke="#1D9E75" stroke-width="10"
+            stroke-dasharray="220" stroke-dashoffset="30" stroke-linecap="round"
+            transform="rotate(-90 285 100)"/>
+          <text x="285" y="104" font-family="sans-serif" font-size="16" fill="#085041" text-anchor="middle" font-weight="500">92%</text>
+          <text x="285" y="155" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">Model Score</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">04</span>
+        <h3>ML Classification &amp; Regression Models</h3>
+        <p>Built and evaluated supervised ML models for classification and regression. Full pipeline — data cleaning, feature engineering, training, evaluation, and reporting.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">Scikit-learn</span>
+          <span class="tool-badge">Pandas</span>
+          <span class="tool-badge">Matplotlib</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Azure AI -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#e8f4fd"/>
+          <!-- cloud shape -->
+          <ellipse cx="200" cy="75" rx="90" ry="45" fill="white" stroke="#378ADD" stroke-width="1.5"/>
+          <ellipse cx="150" cy="88" rx="45" ry="30" fill="white" stroke="#378ADD" stroke-width="1.5"/>
+          <ellipse cx="255" cy="88" rx="45" ry="30" fill="white" stroke="#378ADD" stroke-width="1.5"/>
+          <!-- azure label inside cloud -->
+          <text x="200" y="72" font-family="sans-serif" font-size="12" fill="#185FA5" text-anchor="middle" font-weight="500">Microsoft Azure</text>
+          <text x="200" y="87" font-family="sans-serif" font-size="9" fill="#378ADD" text-anchor="middle">Cognitive Services</text>
+          <!-- service pills below -->
+          <rect x="60" y="130" width="60" height="22" rx="11" fill="#185FA5"/>
+          <text x="90" y="145" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">👁 Vision</text>
+          <rect x="135" y="130" width="65" height="22" rx="11" fill="#185FA5" opacity="0.85"/>
+          <text x="167" y="145" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">💬 Language</text>
+          <rect x="215" y="130" width="60" height="22" rx="11" fill="#185FA5" opacity="0.7"/>
+          <text x="245" y="145" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">🎙 Speech</text>
+          <rect x="290" y="130" width="55" height="22" rx="11" fill="#0C447C"/>
+          <text x="317" y="145" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">Deploy ↗</text>
+          <!-- connector lines -->
+          <line x1="90" y1="118" x2="165" y2="102" stroke="#B5D4F4" stroke-width="1.2"/>
+          <line x1="167" y1="118" x2="200" y2="105" stroke="#B5D4F4" stroke-width="1.2"/>
+          <line x1="245" y1="118" x2="230" y2="104" stroke="#B5D4F4" stroke-width="1.2"/>
+          <line x1="317" y1="118" x2="265" y2="102" stroke="#B5D4F4" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">05</span>
+        <h3>Azure AI Intelligent Application</h3>
+        <p>Built and deployed an intelligent app using Azure Cognitive Services — integrating vision, language, and speech APIs to solve real-world use cases in the cloud.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Azure AI</span>
+          <span class="tool-badge">Cognitive Services</span>
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">Cloud</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 NLP -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#f0fff8"/>
+          <!-- text block -->
+          <rect x="25" y="25" width="160" height="130" rx="8" fill="white" stroke="#9FE1CB" stroke-width="1.2"/>
+          <rect x="35" y="38" width="120" height="6" rx="3" fill="#1D9E75" opacity="0.8"/>
+          <rect x="35" y="52" width="100" height="5" rx="3" fill="#9FE1CB"/>
+          <rect x="35" y="64" width="130" height="5" rx="3" fill="#9FE1CB"/>
+          <rect x="35" y="76" width="90" height="5" rx="3" fill="#9FE1CB"/>
+          <rect x="35" y="88" width="115" height="5" rx="3" fill="#9FE1CB"/>
+          <rect x="35" y="100" width="80" height="5" rx="3" fill="#9FE1CB"/>
+          <!-- arrow -->
+          <text x="205" y="97" font-family="sans-serif" font-size="22" fill="#1D9E75" text-anchor="middle">→</text>
+          <!-- output -->
+          <rect x="225" y="25" width="150" height="60" rx="8" fill="#1D9E75" opacity="0.12" stroke="#1D9E75" stroke-width="1.2"/>
+          <text x="300" y="50" font-family="sans-serif" font-size="10" fill="#085041" text-anchor="middle" font-weight="500">Summary</text>
+          <rect x="235" y="58" width="110" height="4" rx="2" fill="#1D9E75" opacity="0.5"/>
+          <rect x="235" y="67" width="90" height="4" rx="2" fill="#1D9E75" opacity="0.35"/>
+          <!-- sentiment badges -->
+          <rect x="225" y="105" width="70" height="28" rx="14" fill="#1D9E75"/>
+          <text x="260" y="123" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">😊 Positive</text>
+          <rect x="305" y="105" width="65" height="28" rx="14" fill="#E24B4A"/>
+          <text x="337" y="123" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">😠 Negative</text>
+          <!-- label -->
+          <text x="200" y="170" font-family="sans-serif" font-size="10" fill="#1D9E75" text-anchor="middle" font-weight="500">NLP · TF-IDF · Sentiment · Summarisation</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">06</span>
+        <h3>NLP — Text Summarisation &amp; Sentiment Analysis</h3>
+        <p>Built NLP models for automatic text summarisation and sentiment classification using supervised learning on preprocessed text datasets.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">NLP</span>
+          <span class="tool-badge">Scikit-learn</span>
+          <span class="tool-badge">NLTK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 Traffic -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#1a1a2e"/>
+          <!-- road -->
+          <rect x="170" y="0" width="60" height="180" fill="#2a2a3e"/>
+          <rect x="0" y="75" width="400" height="30" fill="#2a2a3e"/>
+          <!-- lane dashes vertical -->
+          <rect x="197" y="10" width="6" height="25" rx="3" fill="#FFD700" opacity="0.5"/>
+          <rect x="197" y="50" width="6" height="25" rx="3" fill="#FFD700" opacity="0.5"/>
+          <rect x="197" y="100" width="6" height="25" rx="3" fill="#FFD700" opacity="0.5"/>
+          <rect x="197" y="140" width="6" height="25" rx="3" fill="#FFD700" opacity="0.5"/>
+          <!-- lane dashes horizontal -->
+          <rect x="20" y="88" width="30" height="6" rx="3" fill="#FFD700" opacity="0.5"/>
+          <rect x="70" y="88" width="30" height="6" rx="3" fill="#FFD700" opacity="0.5"/>
+          <rect x="260" y="88" width="30" height="6" rx="3" fill="#FFD700" opacity="0.5"/>
+          <rect x="310" y="88" width="30" height="6" rx="3" fill="#FFD700" opacity="0.5"/>
+          <!-- traffic light box -->
+          <rect x="215" y="25" width="28" height="68" rx="6" fill="#222"/>
+          <circle cx="229" cy="40" r="9" fill="#E24B4A"/>
+          <circle cx="229" cy="59" r="9" fill="#333"/>
+          <circle cx="229" cy="78" r="9" fill="#1D9E75"/>
+          <!-- glow -->
+          <circle cx="229" cy="40" r="14" fill="#E24B4A" opacity="0.15"/>
+          <circle cx="229" cy="78" r="14" fill="#1D9E75" opacity="0.2"/>
+          <!-- timer arc -->
+          <circle cx="229" cy="78" r="18" fill="none" stroke="#1D9E75" stroke-width="3" stroke-dasharray="90,25" stroke-linecap="round" transform="rotate(-90 229 78)" opacity="0.6"/>
+          <!-- cars -->
+          <rect x="130" y="82" width="32" height="16" rx="4" fill="#378ADD"/>
+          <rect x="135" y="78" width="22" height="10" rx="3" fill="#4a9fd4"/>
+          <circle cx="136" cy="99" r="4" fill="#222"/>
+          <circle cx="156" cy="99" r="4" fill="#222"/>
+          <rect x="240" y="82" width="32" height="16" rx="4" fill="#E24B4A" opacity="0.8"/>
+          <rect x="245" y="78" width="22" height="10" rx="3" fill="#e05a5a"/>
+          <circle cx="246" cy="99" r="4" fill="#222"/>
+          <circle cx="266" cy="99" r="4" fill="#222"/>
+          <!-- data label -->
+          <rect x="10" y="140" width="110" height="28" rx="6" fill="rgba(29,158,117,0.2)" stroke="#1D9E75" stroke-width="1"/>
+          <text x="65" y="152" font-family="sans-serif" font-size="8" fill="#9FE1CB" text-anchor="middle">Density: HIGH</text>
+          <text x="65" y="163" font-family="sans-serif" font-size="8" fill="#1D9E75" text-anchor="middle">Green time → 45s</text>
+          <rect x="280" y="140" width="110" height="28" rx="6" fill="rgba(56,138,221,0.2)" stroke="#378ADD" stroke-width="1"/>
+          <text x="335" y="152" font-family="sans-serif" font-size="8" fill="#B5D4F4" text-anchor="middle">Density: LOW</text>
+          <text x="335" y="163" font-family="sans-serif" font-size="8" fill="#378ADD" text-anchor="middle">Green time → 15s</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">07</span>
+        <h3>Smart Traffic Light Optimisation</h3>
+        <p>Applied data-driven logic to dynamically adjust signal timings based on real-time traffic density. A time-sensitive decision system that reduces congestion and improves flow efficiency.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">Optimisation</span>
+          <span class="tool-badge">Data-Driven Logic</span>
+          <span class="tool-badge">Simulation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 Fake News -->
+    <div class="project-card">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#fff5f5"/>
+          <!-- pipeline steps -->
+          <!-- step 1 -->
+          <rect x="15" y="55" width="65" height="70" rx="8" fill="white" stroke="#9FE1CB" stroke-width="1.2"/>
+          <text x="47" y="83" font-family="sans-serif" font-size="8" fill="#085041" text-anchor="middle" font-weight="500">Raw</text>
+          <text x="47" y="95" font-family="sans-serif" font-size="8" fill="#085041" text-anchor="middle" font-weight="500">Article</text>
+          <rect x="25" y="103" width="45" height="4" rx="2" fill="#9FE1CB"/>
+          <rect x="25" y="112" width="35" height="4" rx="2" fill="#9FE1CB" opacity="0.6"/>
+          <!-- arrow -->
+          <text x="91" y="94" font-family="sans-serif" font-size="14" fill="#1D9E75">→</text>
+          <!-- step 2 -->
+          <rect x="105" y="55" width="65" height="70" rx="8" fill="white" stroke="#9FE1CB" stroke-width="1.2"/>
+          <text x="137" y="80" font-family="sans-serif" font-size="8" fill="#085041" text-anchor="middle" font-weight="500">Pre-</text>
+          <text x="137" y="91" font-family="sans-serif" font-size="8" fill="#085041" text-anchor="middle" font-weight="500">process</text>
+          <text x="137" y="108" font-family="sans-serif" font-size="7" fill="#1D9E75" text-anchor="middle">TF-IDF</text>
+          <text x="137" y="118" font-family="sans-serif" font-size="7" fill="#1D9E75" text-anchor="middle">Tokenise</text>
+          <!-- arrow -->
+          <text x="181" y="94" font-family="sans-serif" font-size="14" fill="#1D9E75">→</text>
+          <!-- step 3 -->
+          <rect x="195" y="55" width="65" height="70" rx="8" fill="white" stroke="#9FE1CB" stroke-width="1.2"/>
+          <text x="227" y="80" font-family="sans-serif" font-size="8" fill="#085041" text-anchor="middle" font-weight="500">ML</text>
+          <text x="227" y="91" font-family="sans-serif" font-size="8" fill="#085041" text-anchor="middle" font-weight="500">Model</text>
+          <text x="227" y="108" font-family="sans-serif" font-size="7" fill="#1D9E75" text-anchor="middle">Classify</text>
+          <text x="227" y="118" font-family="sans-serif" font-size="7" fill="#1D9E75" text-anchor="middle">Predict</text>
+          <!-- arrow -->
+          <text x="271" y="94" font-family="sans-serif" font-size="14" fill="#1D9E75">→</text>
+          <!-- step 4 output -->
+          <rect x="285" y="45" width="100" height="42" rx="8" fill="#1D9E75"/>
+          <text x="335" y="63" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="500">✅ REAL</text>
+          <text x="335" y="77" font-family="sans-serif" font-size="8" fill="#9FE1CB" text-anchor="middle">confidence 94%</text>
+          <rect x="285" y="97" width="100" height="42" rx="8" fill="#E24B4A"/>
+          <text x="335" y="115" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="500">❌ FAKE</text>
+          <text x="335" y="129" font-family="sans-serif" font-size="8" fill="#F7C1C1" text-anchor="middle">flagged for review</text>
+          <!-- bottom label -->
+          <text x="200" y="160" font-family="sans-serif" font-size="9" fill="#A32D2D" text-anchor="middle">Multi-step verification pipeline · Structured process thinking</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-number">08</span>
+        <h3>Fake News Detection</h3>
+        <p>Multi-step quality verification pipeline to classify news as real or fake — text preprocessing, TF-IDF feature extraction, model prediction, and result validation with confidence scores.</p>
+        <div class="project-tools">
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">NLP</span>
+          <span class="tool-badge">Scikit-learn</span>
+          <span class="tool-badge">TF-IDF</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top: 0;">
+  <div class="contact-section">
+    <div class="section-label">Let's connect</div>
+    <h2 class="section-title">Open to opportunities</h2>
+    <p class="contact-intro">I'm looking for entry-level data analyst roles. Feel free to reach out by email or find my work on GitHub and LinkedIn.</p>
+    <div class="contact-links">
+      <a href="mailto:swathichandran112@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l9 6 9-6M3 8v10a1 1 0 001 1h16a1 1 0 001-1V8M3 8a1 1 0 011-1h16a1 1 0 011 1"/></svg>
+        swathichandran112@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/swathiim/" class="contact-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Swathii-ai" class="contact-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a href="tel:9745250369" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        9745250369
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built from scratch · Swathi M · 2025</p>
+</footer>
+
+</body>
+</html>
